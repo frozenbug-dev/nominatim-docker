@@ -24,6 +24,8 @@ x-import-env: &import-env
   IMPORT_STYLE: full
   IMPORT_TIGER_ADDRESSES: "false"
   THREADS: 10
+  # unset this if using small data like single-country
+  FLATNODE_FILE: flatnode.file
 
 services:
   nominatim:

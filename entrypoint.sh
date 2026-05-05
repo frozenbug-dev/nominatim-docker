@@ -29,7 +29,7 @@ cmd_import() {
     exit 1
   fi
 
-  apply_config
+  export_config
   create_user
   download_data
   setup_postgres
@@ -50,7 +50,7 @@ cmd_serve() {
     exit 1
   fi
 
-  apply_config
+  export_config
   create_user
 
   chown -R nominatim:nominatim "${PROJECT_DIR}"
@@ -109,7 +109,7 @@ cmd_sync() {
     exit 1
   fi
 
-  apply_config
+  export_config
   create_user
 
   sudo -E -u nominatim nominatim replication --project-dir "${PROJECT_DIR}" --init

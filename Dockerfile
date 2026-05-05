@@ -70,7 +70,6 @@ RUN true \
 COPY config.sh /app/config.sh
 COPY init.sh /app/init.sh
 COPY entrypoint.sh /app/entrypoint.sh
-COPY conf.d/env /app/env.template
 
 # Collapse image to single layer.
 FROM scratch
@@ -89,7 +88,6 @@ WORKDIR /app
 
 EXPOSE 8080
 
-COPY conf.d/env $PROJECT_DIR/.env
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["serve"]
