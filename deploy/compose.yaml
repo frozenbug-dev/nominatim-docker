@@ -53,6 +53,7 @@ services:
   nominatim-import:
     <<: *image
     command: import
+    container_name: nominatim-import
     restart: no
     volumes:
       - nominatim:/nominatim
@@ -66,6 +67,7 @@ services:
   nominatim-sync:
     <<: *image
     command: sync
+    container_name: nominatim-sync
     restart: unless-stopped
     volumes:
       - nominatim:/nominatim
@@ -85,6 +87,8 @@ services:
     # image: postgis/postgis:18-3.6
     # or use the following image for arm-based systems
     image: docker.io/imresamu/postgis:18-3.6
+    container_name: nominatim-postgres
+    restart: unless-stopped
     volumes:
       - pg:/var/lib/postgresql
       - ./postgresql.conf:/etc/postgresql/postgresql.conf
