@@ -27,9 +27,7 @@ apply_config() {
     sed -i "s|__IMPORT_STYLE__|full|g" "$CONFIG_FILE"
   fi
 
-  if [ -d "${PROJECT_DIR}/flatnode" ]; then
-    sed -i 's|^NOMINATIM_FLATNODE_FILE=$|NOMINATIM_FLATNODE_FILE="'"${PROJECT_DIR}"'/flatnode/flatnode.file"|g' "$CONFIG_FILE"
-  fi
+  sed -i 's|^NOMINATIM_FLATNODE_FILE=$|NOMINATIM_FLATNODE_FILE="'"${PROJECT_DIR}"'/flatnode.file"|g' "$CONFIG_FILE"
 
   if [ "$IMPORT_TIGER_ADDRESSES" = "true" ] || [ -f "$IMPORT_TIGER_ADDRESSES" ]; then
     echo NOMINATIM_USE_US_TIGER_DATA=yes >> "$CONFIG_FILE"
